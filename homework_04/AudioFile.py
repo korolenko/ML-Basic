@@ -5,14 +5,11 @@ from StorageType import StorageType
 class AudioFile(MediaFile):
     def __init__(self, path, storage_type: StorageType, storage_handler: StorageHandler):
         super().__init__(path,storage_type,storage_handler)
-        self.__bitrate = 100
-
-    def set_bitrate(self, bitrate: int):
-        self.__bitrate = bitrate
-
-    def get_bitrate(self):
-        return self.__bitrate
+        self.bitrate = 100
 
     def convert_bitrate(self, target_bitrate):
         print(f"Converting audio to {target_bitrate} bitrate")
-        self.__bitrate = target_bitrate
+        self.bitrate = target_bitrate
+
+    def __str__(self):
+        return f'path: {self.path}, creation_date: {self.creation_date}, owner: {self.owner}, bitrate: {self.bitrate}'
