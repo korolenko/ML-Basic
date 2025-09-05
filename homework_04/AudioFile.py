@@ -11,5 +11,6 @@ class AudioFile(MediaFile):
         print(f"Converting audio to {target_bitrate} bitrate")
         self.bitrate = target_bitrate
 
-    def __str__(self):
-        return f'path: {self.path}, creation_date: {self.creation_date}, owner: {self.owner}, bitrate: {self.bitrate}'
+    #раскомментировать для воспроизведения ошибки AttributeError: 'AudioFile' object has no attribute 'bitrate'
+    #def __str__(self):
+    #    return f'path: {self.path}, creation_date: {self.creation_date}, owner: {self.owner}, bitrate: {self.bitrate}'

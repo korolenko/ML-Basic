@@ -24,3 +24,6 @@ class MediaFile:
     def delete(self):
         return self.storage_handler.delete_file(self.path)
 
+    def __str__(self):
+        return f'path: {self.path}, creation_date: {self.creation_date}, owner: {self.owner}'
+
