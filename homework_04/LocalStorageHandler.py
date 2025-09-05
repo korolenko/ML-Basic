@@ -1,8 +1,6 @@
-from abc import ABC
-
 from StorageHandler import StorageHandler
 
-class LocalStorageHandler(StorageHandler, ABC):
+class LocalStorageHandler(StorageHandler):
     """Реализация работы с локальным хранилищем"""
     def __init__(self):
         print('LocalStorageHandler created')

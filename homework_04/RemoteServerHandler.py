@@ -1,8 +1,6 @@
-from abc import ABC
-
 from StorageHandler import StorageHandler
 
-class RemoteStorageHandler(StorageHandler, ABC):
+class RemoteStorageHandler(StorageHandler):
     """Реализация работы с удаленным сервером"""
 
     def __init__(self):

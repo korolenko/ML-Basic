@@ -1,8 +1,6 @@
-from abc import ABC
-
 from StorageHandler import StorageHandler
 
-class S3StorageHandler(StorageHandler, ABC):
+class S3StorageHandler(StorageHandler):
     """Реализация работы с S3"""
 
     def __init__(self):
