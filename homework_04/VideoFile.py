@@ -4,9 +4,9 @@ from StorageType import StorageType
 
 class VideoFile(MediaFile):
     def __init__(self, path, storage_type: StorageType, storage_handler: StorageHandler):
-        super().__init__(path,storage_type,storage_handler)
         self.video_format = '16:9'
         self.fps = 24
+        super().__init__(path, storage_type, storage_handler)
 
     def change_fps(self, fps: int = 1):
         print(f"Changed fps to {fps}")
@@ -16,3 +16,5 @@ class VideoFile(MediaFile):
         print(f"Changed video format to {video_format}")
         self.video_format = video_format
 
+    def __str__(self):
+        return f'path: {self.path}, creation_date: {self.creation_date}, owner: {self.owner}, fps: {self.fps}, video_format: {self.video_format}'
