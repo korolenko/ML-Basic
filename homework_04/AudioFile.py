@@ -1,13 +1,18 @@
-from abc import ABC
-from homework_04.MediaFile import MediaFile
+from MediaFile import MediaFile
+from StorageHandler import StorageHandler
+from StorageType import StorageType
 
-class AudioFile(MediaFile, ABC):
-    def __init__(self, path, codec):
-        super().__init__(path)
-        self.codec = codec
+class AudioFile(MediaFile):
+    def __init__(self, path, storage_type: StorageType, storage_handler: StorageHandler):
+        super().__init__(path,storage_type,storage_handler)
+        self.__bitrate = 100
 
-    def read(self, path):
-        print(f'Reading {path} and playing music!')
+    def set_bitrate(self, bitrate: int):
+        self.__bitrate = bitrate
 
-    def change(self, path):
-        print(f'Changing music file located {path}...')
+    def get_bitrate(self):
+        return self.__bitrate
+
+    def convert_bitrate(self, target_bitrate):
+        print(f"Converting audio to {target_bitrate} bitrate")
+        self.__bitrate = target_bitrate

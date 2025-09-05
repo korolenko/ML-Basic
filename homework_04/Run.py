@@ -1,13 +1,33 @@
-from homework_04.AudioFile import AudioFile
-
-def read_media_file(file,path):
-    print(file.read(path))
-
-def change_media_file(file,path):
-    print(file.change(path))
+from MediaFileFactory import MediaFileFactory
+from MediaType import MediaType
+from StorageType import StorageType
 
 if __name__ == "__main__":
-    audio_file_path = '/Users/user/Desktop/test.mp3'
-    audio_file = AudioFile(path=audio_file_path, codec='mp3')
-    read_media_file(audio_file,audio_file_path)
+    audio_file = MediaFileFactory.create_media_file(
+        media_type=MediaType.AUDIO,
+        file_path="audio/song.mp3",
+        storage_type=StorageType.S3
+    )
 
+    audio_file.download("/tmp/song.mp3")
+    audio_file.convert_bitrate(345)
+    print(audio_file)
+
+    video_file = MediaFileFactory.create_media_file(
+        media_type=MediaType.VIDEO,
+        file_path="video/movie.mp4",
+        storage_type=StorageType.LOCAL
+    )
+    video_file.change_video_format("4:3")
+    video_file.upload("/tmp/movie.mp4")
+    print(video_file)
+
+    photo_file = MediaFileFactory.create_media_file(
+        media_type=MediaType.PHOTO,
+        file_path="photo/photo.jpg",
+        storage_type=StorageType.REMOTE_SERVER
+    )
+
+    photo_file.set_filter(filter_name="sepia")
+    print(photo_file)
+    photo_file.delete()
